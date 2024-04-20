@@ -8,5 +8,8 @@
 
 echo "Creating the TMUX Session"
 
+# Create TMUX Config File
+cp  ./config_files/tmux.conf ~/.config/tmux/tmux.conf
+
 # Launch Student-SSH TMUX Session
 tmux -S /tmp/tmux_socket new -s student-ssh
