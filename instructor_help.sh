@@ -9,6 +9,7 @@
 echo "Creating the TMUX Session"
 
 # Create TMUX Config File
+mkdir ~/.config/tmux
 cp  ~/rht_help/config_files/tmux.conf ~/.config/tmux/tmux.conf
 
 # Launch Student-SSH TMUX Session
