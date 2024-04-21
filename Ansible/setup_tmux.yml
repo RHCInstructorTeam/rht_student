@@ -23,13 +23,33 @@
       ansible.builtin.debug:
         var: tmux_socket_stat
 
-    - name: Start Instructor TMUX Connection
-      ansible.builtin.debug: 
-        msg: Run the command "tmux -S /tmp/tmux_socket new -s student-ssh"
+    - name: Start tmux session
+      expect:
+        command: tmux -S /tmp/tmux_socket new -s student-ssh
+        responses:
+          ".*": ""
+      register: tmux_start_result
       when: tmux_socket_stat.stat.exists == false
 
-    - name: Start Instructor TMUX Connection
-      ansible.builtin.debug: 
-        msg: Run the command "tmux -S /tmp/tmux_socket att -t student-ssh"
+    - name: Start tmux session
+      expect:
+        command: tmux -S /tmp/tmux_socket att -t student-ssh
+        responses:
+          ".*": ""
+      register: tmux_start_result
       when: tmux_socket_stat.stat.exists
+
+    - name: Attach to tmux session
+      shell: tmux attach-session -t my_session
+      when: tmux_start_result|success
+
+#    - name: Start Instructor TMUX Connection
+#      ansible.builtin.debug: 
+#        msg: Run the command "tmux -S /tmp/tmux_socket new -s student-ssh"
+#      when: tmux_socket_stat.stat.exists == false
+
+#    - name: Start Instructor TMUX Connection
+#      ansible.builtin.debug: 
+#        msg: Run the command "tmux -S /tmp/tmux_socket att -t student-ssh"
+#      when: tmux_socket_stat.stat.exists
 
