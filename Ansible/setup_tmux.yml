@@ -19,6 +19,9 @@
         path: /tmp/tmux_socket
       register: tmux_socket_stat
 
+    - name: Show Status of TMUX Socket 
+      ansible.builtin.debug:
+        var: tmux_socket_stat
 
     - name: Start Instructor TMUX Connection
       ansible.builtin.shell: tmux -S /tmp/tmux_socket new -s student-ssh
