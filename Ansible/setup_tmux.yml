@@ -30,14 +30,6 @@
       register: tmux_start_result
       when: tmux_socket_stat.stat.exists == false
 
-    - name: Wait for tmux to start
-      ansible.builtin.async_status:
-        jid: "{{ tmux_start_result.ansible_job_id }}"
-      register: tmxu_started
-      until: tmxu_started.finished
-      retries: 30
-      delay: 1
-
 #    - name: Start Instructor TMUX Connection
 #      ansible.builtin.debug: 
 #        msg: Run the command "tmux -S /tmp/tmux_socket new -s student-ssh"
