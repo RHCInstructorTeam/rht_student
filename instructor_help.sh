@@ -10,4 +10,4 @@ echo "Creating the TMUX Session"
 
 # Launch Student-SSH TMUX Session
 ansible-playbook Ansible/setup_tmux.yml
-./tmux_connect.sh
+/home/student/rht_help/tmux_connect.sh
