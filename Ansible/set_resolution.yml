@@ -1,7 +1,7 @@
 ---
 - name: Installation of Gnome-tweaks
   hosts: localhost
-  remote_user: student  
+  ansible_connection: local
   tasks:
 
     - name: Ensure resolution is set
