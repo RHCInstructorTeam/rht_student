@@ -24,14 +24,14 @@
         var: tmux_socket_stat
 
     - name: Start tmux session - New TMUX Session
-      ansible.builtin.shell: tmux -S /tmp/tmux_socket new -s student-ssh
+      ansible.builtin.shell: script -q -c "tmux -S /tmp/tmux_socket new -s student-ssh" /dev/null
       async: 30
       poll: 0
       register: tmux_start_result
       when: tmux_socket_stat.stat.exists == false
 
     - name: Start tmux session - Existing TMUX Session
-      ansible.builtin.shell: tmux -S /tmp/tmux_socket att -t student-ssh
+      ansible.builtin.shell: script -q -c "tmux -S /tmp/tmux_socket att -t student-ssh" /dev/null
       async: 30
       poll: 0
       register: tmux_start_result
@@ -46,7 +46,7 @@
       delay: 1
 
     - name: Attach to tmux session
-      shell: tmux attach-session -t my_session
+      shell: script -q -c "tmux attach-session -t my_session" /dev/null
       when: tmxu_started.finished
 
 #    - name: Start Instructor TMUX Connection
