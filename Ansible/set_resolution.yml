@@ -1,6 +1,7 @@
 ---
 - name: Installation of Gnome-tweaks
   hosts: localhost
+  remote_user: student
   tasks:
 
     - name: Ensure resolution is set
