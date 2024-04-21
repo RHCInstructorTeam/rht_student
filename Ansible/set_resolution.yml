@@ -1,8 +1,8 @@
 ---
 - name: Installation of Gnome-tweaks
   hosts: localhost
-  ansible_connection: local
   tasks:
 
     - name: Ensure resolution is set
       ansible.builtin.command: xrandr --size 1920x1080
+      delegate_to: localhost
