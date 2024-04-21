@@ -25,5 +25,5 @@
 
     - name: Start Instructor TMUX Connection
       ansible.builtin.shell: tmux -S /tmp/tmux_socket new -s student-ssh
-      when: tmux_socket_stat.stat.exists
+      when: tmux_socket_stat.stat.exists == false
 
