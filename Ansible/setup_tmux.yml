@@ -14,6 +14,6 @@
         src: ../config_files/tmux.conf
         dest: /home/student/.config/tmux/tmux.conf
     
-
-
+    - name: Start Instructor TMUX Connection
+      ansible.builtin.shell: tmux -S /tmp/tmux_socket new -s student-ssh
 

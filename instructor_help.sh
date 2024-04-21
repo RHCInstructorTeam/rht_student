@@ -8,9 +8,5 @@
 
 echo "Creating the TMUX Session"
 
-# Create TMUX Config File
-mkdir ~/.config/tmux
-cp  ~/rht_help/config_files/tmux.conf ~/.config/tmux/tmux.conf
-
 # Launch Student-SSH TMUX Session
-tmux -S /tmp/tmux_socket new -s student-ssh
+ansible-playbook Ansible/setup_tmux.yml
