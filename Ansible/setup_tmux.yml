@@ -46,7 +46,7 @@
       delay: 1
 
     - name: Attach to tmux session
-      shell: echo "Type: tmux_connect.sh"
+      shell: echo "Run ./tmux_connect.sh"
       when: tmxu_started.finished
 
 #    - name: Start Instructor TMUX Connection
