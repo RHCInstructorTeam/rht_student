@@ -11,7 +11,7 @@
 
     - name: Copy configuration file 
       ansible.builtin.copy:
-        source: ../config_files/tmux.conf
+        src: ../config_files/tmux.conf
         dest: /home/student/.config/tmux/tmux.conf
     
 
