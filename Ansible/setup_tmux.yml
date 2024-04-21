@@ -24,6 +24,12 @@
         var: tmux_socket_stat
 
     - name: Start Instructor TMUX Connection
-      ansible.builtin.shell: tmux -S /tmp/tmux_socket new -s student-ssh
+      ansible.builtin.debug: 
+        msg: Run the command "tmux -S /tmp/tmux_socket new -s student-ssh"
       when: tmux_socket_stat.stat.exists == false
+
+    - name: Start Instructor TMUX Connection
+      ansible.builtin.debug: 
+        msg: Run the command "tmux -S /tmp/tmux_socket att -t student-ssh"
+      when: tmux_socket_stat.stat.exists
 
