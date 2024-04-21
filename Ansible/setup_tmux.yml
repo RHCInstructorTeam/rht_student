@@ -1,0 +1,19 @@
+---
+- name: Configure TMUX for Multi-Users
+  hosts: localhost
+  remote_user: student
+
+  tasks:
+    - name: Create and ensure directory
+      ansible.builtin.file:
+        path: /home/.config/tmux
+        state: directory
+
+    - name: Copy configuration file 
+      ansible.builtin.copy:
+        source: ../config_files/tmux.conf
+        dest: /home/.config/tmux/tmux.conf
+    
+
+
+
