@@ -14,6 +14,11 @@
         src: ../config_files/tmux.conf
         dest: /home/student/.config/tmux/tmux.conf
 
+    - name: Delete TMUX Socket 
+      ansible.builtin.file:
+        path: /tmp/tmux_socket
+        state: absent
+
     - name: Check if the TMUX Socket Exists
       stat:
         path: /tmp/tmux_socket
@@ -22,11 +27,6 @@
     - name: Show Status of TMUX Socket 
       ansible.builtin.debug:
         var: tmux_socket_stat
-
-    - name: Delete TMUX Socket 
-      ansible.builtin.file:
-        path: /tmp/tmux_socket
-        state: absent
 
     - name: Start tmux session - New TMUX Session
       ansible.builtin.shell: script -q -c "tmux -S /tmp/tmux_socket new -s student-ssh" /dev/null
