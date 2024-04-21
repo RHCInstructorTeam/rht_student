@@ -23,15 +23,22 @@
       ansible.builtin.debug:
         var: tmux_socket_stat
 
-    - name: Start tmux session - Expect with new TMUX Session
+    - name: Start tmux session - New TMUX Session
       ansible.builtin.shell: tmux -S /tmp/tmux_socket new -s student-ssh
       async: 30
       poll: 0
       register: tmux_start_result
       when: tmux_socket_stat.stat.exists == false
 
+    - name: Start tmux session - Existing TMUX Session
+      ansible.builtin.shell: tmux -S /tmp/tmux_socket att -t student-ssh
+      async: 30
+      poll: 0
+      register: tmux_start_result
+      when: tmux_socket_stat.stat.exists
+
     - name: Wait for tmux to start
-      async_status:
+      ansible.builtin.async_status:
         jid: "{{ tmux_start_result.ansible_job_id }}"
       register: tmxu_started
       until: tmxu_started.finished
