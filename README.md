@@ -15,5 +15,5 @@ rht_help/instructor_help.sh
 # Instructor Instructions
 
 ```
-rht_help/instructor_connect.sh
+rht_help/tmux_connect.sh
 ```
