@@ -6,13 +6,13 @@
   tasks:
     - name: Create and ensure directory
       ansible.builtin.file:
-        path: /home/.config/tmux
+        path: /home/student/.config/tmux
         state: directory
 
     - name: Copy configuration file 
       ansible.builtin.copy:
         source: ../config_files/tmux.conf
-        dest: /home/.config/tmux/tmux.conf
+        dest: /home/student/.config/tmux/tmux.conf
     
 
 
