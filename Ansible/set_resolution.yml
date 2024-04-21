@@ -4,4 +4,6 @@
   tasks:
 
     - name: Ensure resolution is set
-      ansible.builtin.shell:  xrandr --output Virtual-1 --mode 1920x1080
+      ansible.builtin.shell:  >
+        xrandr --output $(xrandr | awk '/ connected/ {print $1}') --mode 1920x1080
+      become: yes
