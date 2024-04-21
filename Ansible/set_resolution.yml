@@ -4,11 +4,6 @@
   remote_user: student  
   tasks:
 
-    - name: Get current resolution
-      ansible.builtin.command: xrandr
-      register: resolution
-
-
     - name: Ensure resolution is set
       ansible.builtin.command: xrandr --size 1920x1080
       when: "'current 1920 x 1080' not in resolution['stdout']"
