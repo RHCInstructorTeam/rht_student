@@ -4,5 +4,4 @@
   tasks:
 
     - name: Ensure resolution is set
-      ansible.builtin.command: xrandr --size 1920x1080
-      delegate_to: localhost
+      ansible.builtin.command:  xrandr --output $(xrandr | awk '/ connected/ {print $1}') --mode 1920x1080
