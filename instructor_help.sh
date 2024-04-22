@@ -10,6 +10,7 @@ echo "Creating the TMUX Session"
 rm /tmp/tmux_session
 
 # Launch Student-SSH TMUX Session
+cd /home/student/rht_help
 ansible-playbook Ansible/setup_tmux.yml
 echo "Launching the TMUX Session"
 sleep 5
