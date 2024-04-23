@@ -1,0 +1,89 @@
+= {subject}
+:subject: Red Hat Training Lab Playbooks and Scripts
+:description:  Student and Instructor Scripts
+Travis Michette <tmichett@redhat.com>
+:doctype: book
+:customer:  GLS
+:listing-caption: Listing
+:toc:
+:toclevels: 7
+:sectnums:
+:sectnumlevels: 6
+:numbered:
+:chapter-label:
+:pdf-page-size: LETTER
+:icons: font
+:imagesdir: images/
+// The IF Statements don't always work. So must comment out and uncomment based on ePub or PDF
+// Title-Page-Background is for PDF
+// Front-Cover-Image is for ePub
+//:front-cover-image: image:Training_Cover.png[align="top left"]
+:title-page-background-image: image:Training_Cover.png[pdfwidth=8.0in,position=top left]
+
+
+// Initial Settings for PDFs
+ifdef::backend-pdf[]
+:title-page-background-image: image:Training_Cover.png[pdfwidth=8.0in,position=top left]
+:pygments-style: tango
+:source-highlighter: pygments
+endif::[]
+
+// Initial Settings for Github
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:revnumber: 1.0
+
+// Initial Settings for ePub
+ifdef::ebook-format-epub3[]
+:front-cover-image: image:Training_Cover.png[align="top left"]
+:title-page-background-image: image:Training_Cover.png[pdfwidth=8.0in,position=top left]
+:pygments-style: tango
+:source-highlighter: pygments
+endif::[]
+
+== Initial Setup 
+
+In order to use any of the scripts, it is necessary to first clone the repository. 
+
+.Cloning the repository to *rht_help*
+[source,bash]
+----
+git clone https://github.com/tmichett/rht_student.git rht_help
+----
+
+
+
+=== Using TMUX
+
+.Student Instructions 
+
+Student users can begin a TMUX session in the *Classroom Web Terminal* that can be shared with an instructor. Once the repository has been cloned to the proper directory the *instructor_help.sh* script can be used to startup a TMUX connection that can be shared between a student and the instructor.
+
+
+
+image::README-24-04-22-20-40-08.png[title="Launching Instructor Help Script", align="center"]
+
+.Starting a TMUX Session
+[source,bash]
+----
+rht_help/instructor_help.sh
+----
+
+image::README-24-04-22-20-47-25.png[title="TMUX Connection", align="center"]
+
+.Instructor Instructions
+
+Instructors can connect to and view TMUX sessions with the *tmux_connect.sh* script. This script will connect to the TMUX session created by students allowing instructors to assist and see what the student has typed.
+
+.Connecting to and Sharing a TMUX Connection
+[source,bash]
+----
+rht_help/tmux_connect.sh
+----
