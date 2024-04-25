@@ -36,7 +36,7 @@ jobs:
         run: cp README.pdf Instructions.pdf
         
       - name: Copy Images
-        run: cp -av images/*.* ./docs/images
+        run: cp -av images/*.* ./docs/images && git config --global user.name "Travis Michette" && git add ./docs/images
         
       - name: Podman Build HTML Pages
         run: podman run --name adochtml --rm -v $(pwd):/tmp/ADOC_Work:Z quay.io/tmichett/adoc-html:latest README.adoc
