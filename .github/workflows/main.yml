@@ -41,5 +41,8 @@ jobs:
       - name: Copy HTML
         run: cp README.html ./docs/index.html
 
+      - name: Copy Images
+        run: cp images/* ./docs/images
+
       - name: Commit and Add Book
         run: git config --global user.email "tmichett@redhat.com" && git config --global user.name "Travis Michette" && git add Instructions.pdf ./docs/index.html && git commit -m "Added new Instructions.pdf" && git push
