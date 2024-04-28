@@ -451,7 +451,25 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel1">
 <li><a href="#_initial_setup">1. Initial Setup</a>
 <ul class="sectlevel2">
-<li><a href="#_using_tmux">1.1. Using TMUX</a></li>
+<li><a href="#_cloning_the_repository">1.1. Cloning the Repository</a></li>
+<li><a href="#_refreshing_the_cloned_repository">1.2. Refreshing the Cloned Repository</a></li>
+</ul>
+</li>
+<li><a href="#_using_tmux">2. Using TMUX</a>
+<ul class="sectlevel2">
+<li><a href="#_student_instructions">2.1. Student Instructions</a></li>
+<li><a href="#_instructor_instructions">2.2. Instructor Instructions</a></li>
+</ul>
+</li>
+<li><a href="#_configuring_the_graphics_section">3. Configuring the Graphics Section</a>
+<ul class="sectlevel2">
+<li><a href="#_configuring_and_installing_gnome_tweaks">3.1. Configuring and Installing GNOME Tweaks</a></li>
+<li><a href="#_setting_resolution_to_full_hd_1920x1080">3.2. Setting Resolution to Full-HD (1920x1080)</a></li>
+</ul>
+</li>
+<li><a href="#_configuring_a_vimrc">4. Configuring a VIMRC</a>
+<ul class="sectlevel2">
+<li><a href="#_installing_vimrc_plugins_and_configurations">4.1. Installing VIMRC Plugins and Configurations</a></li>
 </ul>
 </li>
 </ul>
@@ -462,7 +480,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h2 id="_initial_setup">1. Initial Setup</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>In order to use any of the scripts, it is necessary to first clone the repository.</p>
+<p>In order to use any of the <strong>RHT_Help</strong> scripts and playbooks the repository must first be cloned using a <strong>git clone</strong> command. Once it has been cloned, if any updates are made throughout the delivery of the course, the student can simply pull down new content using a <strong>git pull</strong> command.</p>
+</div>
+<div class="sect2">
+<h3 id="_cloning_the_repository">1.1. Cloning the Repository</h3>
+<div class="paragraph">
+<p>The instructions are based on the repository being in a common location relative to the student&#8217;s home directory. The instructions for cloning the repository should be done from the student&#8217;s home directory <strong>/home/student</strong> which will create a sub-directory called <strong>rht_help</strong>. All instructions as part of this guide will assume that <strong>/home/student/rht_help</strong> will contained the cloned repository and files.</p>
 </div>
 <div class="listingblock">
 <div class="title">Listing 1. Cloning the repository to <strong>rht_help</strong></div>
@@ -470,10 +493,54 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <pre class="highlight"><code class="language-bash" data-lang="bash">git clone https://github.com/tmichett/rht_student.git rht_help</code></pre>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="_using_tmux">1.1. Using TMUX</h3>
+<h3 id="_refreshing_the_cloned_repository">1.2. Refreshing the Cloned Repository</h3>
 <div class="paragraph">
-<div class="title">Student Instructions</div>
+<p>It might be necessary to refresh and update the files in the downloaded repository. This can be done with the <strong>git pull</strong> command from within the repository.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. Refreshing the repository</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">cd ~/rht_help
+git pull</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There is also a way to refresh the repository with a script located in <strong>~/rht_help</strong> which is the <strong>refresh_repo.sh</strong> script.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 3. Refreshing the repository with a script</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">~/rht_help/refresh_repo.sh</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_tmux">2. Using TMUX</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The use of a shared TMUX connection allows the instructor and student to view the same terminal session when using the Classroom Web Application (Jupyter Notebook). In order to use TMUX with the shared session, the repository must first be cloned to the Workstation machine. The <strong>Initial Setup</strong> instructions provide the directions on how to clone the directory to the students home directory in the <strong>rht_help</strong> sub-directory.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>All commands shown for the <strong>student</strong> and <strong>instructor</strong> instructions should be run from the student&#8217;s home directory <strong>/home/student</strong> or by using the relative path <strong>~/rht_help</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_student_instructions">2.1. Student Instructions</h3>
+<div class="paragraph">
 <p>Student users can begin a TMUX session in the <strong>Classroom Web Terminal</strong> that can be shared with an instructor. Once the repository has been cloned to the proper directory the <strong>instructor_help.sh</strong> script can be used to startup a TMUX connection that can be shared between a student and the instructor.</p>
 </div>
 <div class="imageblock text-center">
@@ -483,9 +550,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="title">Figure 1. Launching Instructor Help Script</div>
 </div>
 <div class="listingblock">
-<div class="title">Listing 2. Starting a TMUX Session</div>
+<div class="title">Listing 4. Starting a TMUX Session</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">rht_help/instructor_help.sh</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">~/rht_help/instructor_help.sh</code></pre>
 </div>
 </div>
 <div class="imageblock text-center">
@@ -494,14 +561,68 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div class="title">Figure 2. TMUX Connection</div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_instructor_instructions">2.2. Instructor Instructions</h3>
 <div class="paragraph">
-<div class="title">Instructor Instructions</div>
 <p>Instructors can connect to and view TMUX sessions with the <strong>tmux_connect.sh</strong> script. This script will connect to the TMUX session created by students allowing instructors to assist and see what the student has typed.</p>
 </div>
 <div class="listingblock">
-<div class="title">Listing 3. Connecting to and Sharing a TMUX Connection</div>
+<div class="title">Listing 5. Connecting to and Sharing a TMUX Connection</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">rht_help/tmux_connect.sh</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">~/rht_help/tmux_connect.sh</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuring_the_graphics_section">3. Configuring the Graphics Section</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This repository also contains a set of playbooks to assist with modifying and configuring the GNOME graphical with tweaks showing open windows, minimize, maximize and other items. This section also contains the scripts and playbooks to quickly set the desktop resolution to 1080P.</p>
+</div>
+<div class="sect2">
+<h3 id="_configuring_and_installing_gnome_tweaks">3.1. Configuring and Installing GNOME Tweaks</h3>
+<div class="paragraph">
+<p>The <strong>setup_gnome_tweaks.sh</strong> script will run a playbook with several tasks to install GNOME Tweaks as well as configure some basic settings for GNOME to make the look/feel more like RHEL7 and earlier systems and give familiar Windows look/feel with minimize/maximize/close and the open windows on the bar.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 6. Installing and Configuring GNOME Tweaks</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">~/rht_help/setup_gnome_tweaks.sh</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_setting_resolution_to_full_hd_1920x1080">3.2. Setting Resolution to Full-HD (1920x1080)</h3>
+<div class="paragraph">
+<p>The default resolution of the workstation environment may be insufficient for using several of the GUI tools or WebUI tools used for the course. It is possible to reset the resolution of the workstation machine to 1920x1080 to maximize the available screen real estate and fully view the various webUIs that have been provided. The <strong>set_resolution_hd.sh</strong> script should be used to set the resolution to 1080P.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 7. Setting Resolution to 1920x1080 for Workstation</div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">~/rht_help/set_resolution_hd.sh</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuring_a_vimrc">4. Configuring a VIMRC</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There is a script which will bring down another repository which can configure VIMRC with various plugins and settings. Running this script will configure VIM to operate more like VSCode and will provide column guides, syntax highlighting, basic linting, line numbers, and more.</p>
+</div>
+<div class="sect2">
+<h3 id="_installing_vimrc_plugins_and_configurations">4.1. Installing VIMRC Plugins and Configurations</h3>
+<div class="paragraph">
+<p>The installation of the VIMRC settings will clone <a href="https://github.com/tmichett/vimrc" class="bare">https://github.com/tmichett/vimrc</a> and install the plugins and setup the <strong>vimrc</strong> file for the student user. The <strong>vimrc_config.sh</strong> script will be used to setup and configure the <strong>.vimrc</strong> file for the student user.</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 8. Setup and Configure <strong>.vimrc</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">~/rht_help/vimrc_config.sh</code></pre>
 </div>
 </div>
 </div>
@@ -511,7 +632,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="footer">
 <div id="footer-text">
 Version 1.0<br>
-Last updated 2024-04-25 12:45:16 UTC
+Last updated 2024-04-28 14:39:12 UTC
 </div>
 </div>
 </body>
