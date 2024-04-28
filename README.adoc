@@ -50,7 +50,11 @@ endif::[]
 
 == Initial Setup 
 
-In order to use any of the scripts, it is necessary to first clone the repository. 
+In order to use any of the *RHT_Help* scripts and playbooks the repository must first be cloned using a *git clone* command. Once it has been cloned, if any updates are made throughout the delivery of the course, the student can simply pull down new content using a *git pull* command.
+
+=== Cloning the Repository
+
+The instructions are based on the repository being in a common location relative to the student's home directory. The instructions for cloning the repository should be done from the student's home directory */home/student* which will create a sub-directory called *rht_help*. All instructions as part of this guide will assume that */home/student/rht_help* will contained the cloned repository and files.
 
 .Cloning the repository to *rht_help*
 [source,bash]
@@ -59,10 +63,36 @@ git clone https://github.com/tmichett/rht_student.git rht_help
 ----
 
 
+=== Refreshing the Cloned Repository
 
-=== Using TMUX
+It might be necessary to refresh and update the files in the downloaded repository. This can be done with the *git pull* command from within the repository.
 
-.Student Instructions 
+.Refreshing the repository
+[source,bash]
+----
+cd ~/rht_help
+git pull
+----
+
+There is also a way to refresh the repository with a script located in *~/rht_help* which is the *refresh_repo.sh* script.
+
+.Refreshing the repository with a script
+[source,bash]
+----
+~/rht_help/refresh_repo.sh
+----
+
+
+== Using TMUX
+
+The use of a shared TMUX connection allows the instructor and student to view the same terminal session when using the Classroom Web Application (Jupyter Notebook). In order to use TMUX with the shared session, the repository must first be cloned to the Workstation machine. The *Initial Setup* instructions provide the directions on how to clone the directory to the students home directory in the *rht_help* sub-directory. 
+
+[IMPORTANT]
+=====
+All commands shown for the *student* and *instructor* instructions should be run from the student's home directory */home/student* or by using the relative path *~/rht_help*.
+=====
+
+=== Student Instructions 
 
 Student users can begin a TMUX session in the *Classroom Web Terminal* that can be shared with an instructor. Once the repository has been cloned to the proper directory the *instructor_help.sh* script can be used to startup a TMUX connection that can be shared between a student and the instructor.
 
@@ -73,17 +103,57 @@ image::README-24-04-22-20-40-08.png[title="Launching Instructor Help Script", al
 .Starting a TMUX Session
 [source,bash]
 ----
-rht_help/instructor_help.sh
+~/rht_help/instructor_help.sh
 ----
 
 image::README-24-04-22-20-47-25.png[title="TMUX Connection", align="center"]
 
-.Instructor Instructions
+=== Instructor Instructions
 
 Instructors can connect to and view TMUX sessions with the *tmux_connect.sh* script. This script will connect to the TMUX session created by students allowing instructors to assist and see what the student has typed.
 
 .Connecting to and Sharing a TMUX Connection
 [source,bash]
 ----
-rht_help/tmux_connect.sh
+~/rht_help/tmux_connect.sh
+----
+
+== Configuring the Graphics Section
+
+This repository also contains a set of playbooks to assist with modifying and configuring the GNOME graphical with tweaks showing open windows, minimize, maximize and other items. This section also contains the scripts and playbooks to quickly set the desktop resolution to 1080P.
+
+=== Configuring and Installing GNOME Tweaks
+
+The *setup_gnome_tweaks.sh* script will run a playbook with several tasks to install GNOME Tweaks as well as configure some basic settings for GNOME to make the look/feel more like RHEL7 and earlier systems and give familiar Windows look/feel with minimize/maximize/close and the open windows on the bar.
+
+.Installing and Configuring GNOME Tweaks
+[source,bash]
+----
+~/rht_help/setup_gnome_tweaks.sh
+----
+
+
+=== Setting Resolution to Full-HD (1920x1080)
+
+The default resolution of the workstation environment may be insufficient for using several of the GUI tools or WebUI tools used for the course. It is possible to reset the resolution of the workstation machine to 1920x1080 to maximize the available screen real estate and fully view the various webUIs that have been provided. The *set_resolution_hd.sh* script should be used to set the resolution to 1080P.
+
+.Setting Resolution to 1920x1080 for Workstation
+[source,bash]
+----
+~/rht_help/set_resolution_hd.sh
+----
+
+
+== Configuring a VIMRC 
+
+There is a script which will bring down another repository which can configure VIMRC with various plugins and settings. Running this script will configure VIM to operate more like VSCode and will provide column guides, syntax highlighting, basic linting, line numbers, and more. 
+
+=== Installing VIMRC Plugins and Configurations
+
+The installation of the VIMRC settings will clone https://github.com/tmichett/vimrc and install the plugins and setup the *vimrc* file for the student user. The *vimrc_config.sh* script will be used to setup and configure the *.vimrc* file for the student user.
+
+.Setup and Configure *.vimrc*
+[source,bash]
+----
+~/rht_help/vimrc_config.sh
 ----
