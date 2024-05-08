@@ -21,6 +21,14 @@
         line: set mouse=a
         create: yes
 
+## Added for older TMUX Versions <  v3.1 for support Issue 5
+    - name: Create Symbolic Link for older TMUX Versions
+      ansible.builtin.file:
+        src: /home/student/.config/tmux/tmux.conf
+        dest: /home/student/.tmux.conf
+        state: link
+
+
     - name: Delete TMUX Socket 
       ansible.builtin.file:
         path: /tmp/tmux_socket
