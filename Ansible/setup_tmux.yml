@@ -14,6 +14,13 @@
         src: ../config_files/tmux.conf
         dest: /home/student/.config/tmux/tmux.conf
 
+## Added so Scroll works right in VIM
+    - name: Create VIMRC File Items
+      ansible.builtin.lineinfile:
+        path: /home/student/.vimrc
+        line: set mouse=a
+        create: yes
+
     - name: Delete TMUX Socket 
       ansible.builtin.file:
         path: /tmp/tmux_socket
